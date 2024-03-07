@@ -1,0 +1,32 @@
+<h1>30s counter</h1>
+<button class="button_click">Click me</button>
+<p class="timer">30</p>
+
+<script>
+    document.addEventListener('DOMContentLoaded'    ,function(){
+        var buttonClick=document.querySelector('.button_click');
+        var timerDisplay=document.querySelector('.timer');  
+        var timerInterval;
+        var timeLeft=30;
+        
+        function updateTimer(){
+            timerDisplay.textContent=timeLeft;
+        }
+        function startCountdown(){
+            timerInterval=setInterval(function(){
+                if(timeLeft>0)
+                {
+                    timeLeft=timeLeft-1;
+                    updateTimer();
+                }
+                else{
+                    clearInterval(timerInterval);
+                }
+            },1000);
+        }
+        buttonClick.addEventListener('click',function(){
+            startCountdown()
+        })
+    })
+
+</script>
